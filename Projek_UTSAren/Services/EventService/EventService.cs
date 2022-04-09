@@ -34,5 +34,10 @@ namespace Projek_UTSAren.Services.EventService
         {
             return _eventRepository.AmbilSemuaEventAsync().Result;
         }
+
+        public Event AmbilEventBerdasarkanId(string id)
+        {
+            return _eventRepository.AmbilEventBerdasarkanIdAsync(id).Result;
+        }
     }
 }

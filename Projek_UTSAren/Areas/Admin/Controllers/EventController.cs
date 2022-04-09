@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Projek_UTSAren.Data;
 using Projek_UTSAren.Models;
+using Projek_UTSAren.Services.EventService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,9 +13,12 @@ namespace Projek_UTSAren.Areas.Admin.Controllers
     public class EventController : Controller
     {
         private readonly AppDbContext _context;
-        public EventController(AppDbContext context)
+        private readonly IEventService _eventService;
+
+        public EventController(AppDbContext context, IEventService even)
         {
             _context = context;
+            _eventService = even;
         }
         public IActionResult Index()
         {
@@ -80,16 +84,15 @@ namespace Projek_UTSAren.Areas.Admin.Controllers
 
             return RedirectToAction("Index");
         }
-        public IActionResult Detail(string id)
+        public IActionResult DetailEvent(string id)
         {
-            var details = new List<Models.Event>();
-            var detail = _context.Tb_Event.Where(x => x.Id_event == id).ToList();
-            if (detail == null)
+            Event cari = _eventService.AmbilEventBerdasarkanId(id);
+
+            if (cari != null)
             {
-                return NotFound();
+                return View(cari);
             }
-            ViewBag.details = detail;
-            return View();
+            return NotFound();
         }
     }
 }

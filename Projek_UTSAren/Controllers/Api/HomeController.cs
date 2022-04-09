@@ -130,9 +130,12 @@ namespace Projek_UTSAren.Controllers.Api
         }
 
         //----------------------------------- API UNTUK EVENT ---------------------------------------------------//
+        //=======================================================================================================//
+        private Event _TEvent;
+
         private string SEvent = "Event";
 
-        [Route("Event")]
+        [Route("event")]
         public IActionResult Event()
         {
             _objek = _eventService.AmbilSemuaEvent();
@@ -141,7 +144,7 @@ namespace Projek_UTSAren.Controllers.Api
             return Ok(_respon);
         }
 
-        [Route("Event")]
+        [Route("event")]
         [HttpPost]
         public IActionResult CreateEvent(Event parameter)
         {
@@ -153,6 +156,20 @@ namespace Projek_UTSAren.Controllers.Api
                 return Ok(_respon);
             }
             _respon = _bantu.BuatResponAPI(_bantu.CodeBadRequest, _bantu.PesanInputanSalah(SEvent), null);
+            return Ok(_respon);
+        }
+        [Route("event/{id}")]
+        public IActionResult DetailEvent(string id)
+        {
+            _TEvent = _eventService.AmbilEventBerdasarkanId(id);
+
+            if (_TEvent != null)
+            {
+                _respon = _bantu.BuatResponAPI(_bantu.CodeOk, _bantu.PesanGetSukses(SEvent), _TEvent);
+                return Ok(_respon);
+            }
+
+            _respon = _bantu.BuatResponAPI(_bantu.CodeBadRequest, _bantu.PesanTidakDitemukan(SEvent), null);
             return Ok(_respon);
         }
     }
