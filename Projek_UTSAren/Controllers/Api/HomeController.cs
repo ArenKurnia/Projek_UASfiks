@@ -123,16 +123,5 @@ namespace Projek_UTSAren.Controllers.Api
             _respon = _bantu.BuatResponAPI(_bantu.CodeBadRequest, _bantu.PesanTidakDitemukan(SAlumni), null);
             return Ok(_respon);
         }
-
-
-        //// User
-        [Route("user")]
-        public IActionResult Pengguna()
-        {
-            _objek = _alumniService.AmbilSemuaUser();
-
-            _respon = _bantu.BuatResponAPI(_bantu.CodeOk, _bantu.PesanGetSukses(SUser), _objek);
-            return Ok(_respon);
-        }
     }
 }
