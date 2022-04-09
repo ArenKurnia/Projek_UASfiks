@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using Projek_UTSAren.Helper;
 using Projek_UTSAren.Models;
 using Projek_UTSAren.Services.AlumniService;
+using Projek_UTSAren.Services.EventService;
+using Projek_UTSAren.Services.TahunService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,8 +15,11 @@ namespace Projek_UTSAren.Controllers.Api
     [Route("api/[controller]")]
     public class HomeController : Controller
     {
+
+        //------------------------------ API UNTUK A L U M N I ---------------------------------------------------//
         // service
         private readonly IAlumniService _alumniService;
+        private readonly IEventService _eventService;
 
         // class
         private BanyakBantuan _bantu = new();
@@ -27,11 +32,11 @@ namespace Projek_UTSAren.Controllers.Api
         private Alumni _TAlumni;
         // tampungan string
         private string SAlumni = "Alumni";
-        private string SUser = "User";
 
-        public HomeController(IAlumniService s)
+        public HomeController(IAlumniService a, IEventService e)
         {
-            _alumniService = s;
+            _alumniService = a;
+            _eventService = e;
         }
 
         [Route("alumni")]
@@ -121,6 +126,33 @@ namespace Projek_UTSAren.Controllers.Api
             }
 
             _respon = _bantu.BuatResponAPI(_bantu.CodeBadRequest, _bantu.PesanTidakDitemukan(SAlumni), null);
+            return Ok(_respon);
+        }
+
+        //----------------------------------- API UNTUK EVENT ---------------------------------------------------//
+        private string SEvent = "Event";
+
+        [Route("Event")]
+        public IActionResult Event()
+        {
+            _objek = _eventService.AmbilSemuaEvent();
+
+            _respon = _bantu.BuatResponAPI(_bantu.CodeOk, _bantu.PesanGetSukses(SEvent), _objek);
+            return Ok(_respon);
+        }
+
+        [Route("Event")]
+        [HttpPost]
+        public IActionResult CreateEvent(Event parameter)
+        {
+            if (ModelState.IsValid)
+            {
+                _eventService.CreateEvent(parameter);
+
+                _respon = _bantu.BuatResponAPI(_bantu.CodeOk, _bantu.PesanTambahSukses(SEvent), parameter);
+                return Ok(_respon);
+            }
+            _respon = _bantu.BuatResponAPI(_bantu.CodeBadRequest, _bantu.PesanInputanSalah(SEvent), null);
             return Ok(_respon);
         }
     }
