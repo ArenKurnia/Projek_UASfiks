@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 04, 2022 at 10:36 AM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 8.0.10
+-- Generation Time: Apr 09, 2022 at 01:54 PM
+-- Server version: 10.4.17-MariaDB
+-- PHP Version: 8.0.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -46,8 +46,9 @@ CREATE TABLE `tb_alumni` (
 --
 
 INSERT INTO `tb_alumni` (`NIM`, `Nama_alumni`, `Tahun_angkatan`, `Jenis_kelamin`, `Tempat_lahir`, `Tanggal_lahir`, `Pekerjaan`, `Alamat`, `Telp`, `Foto`, `RolesId`) VALUES
-('02031911057', 'Hanafi Abdullah', 2019, 'Laki-Laki', 'Boyolali', '2000-02-23 09:49:00', 'Dosen', 'Kp. Senang, Desa Andong', '085887866742', 'hanafi.jpeg', NULL),
-('02042011002', 'Aren Kurnia', 2020, 'Perempuan', 'Subang', '2022-02-04 05:35:00', 'Mahasiswa', 'Kec. Patokbeusi', '085887866742', 'download.png', NULL);
+('0203181044', 'Randi Firmansyah', 2018, 'Laki-Laki', 'KBB', '1999-04-09 16:02:00', 'Programmer', 'Jl.Dakota No.8a', '085156061121', '/namaFoldernya/WhatsApp Image 2022-04-09 at 15.57.13.jpeg', NULL),
+('02031911057', 'Hanafi Abdullah', 2019, 'Laki-Laki', 'Boyolali', '2000-02-23 09:49:00', 'Dosen', 'Kp. Senang, Desa Andong', '085887866742', '/namaFoldernya/Hanafi.jpeg', '1'),
+('02042011002', 'Aren Kurnia', 2020, 'Perempuan', 'Subang', '2022-02-04 05:35:00', 'Mahasiswa', 'Kec. Patokbeusi', '085887866742', '/namaFoldernya/Aren.jpg', NULL);
 
 -- --------------------------------------------------------
 
@@ -73,7 +74,8 @@ CREATE TABLE `tb_event` (
 
 INSERT INTO `tb_event` (`Id_event`, `Id_angkatan`, `Nama_event`, `Tanggal`, `Tempat`, `Waktu`, `Batas_daftar`, `Keterangan`, `Status`) VALUES
 ('Event_01', '19', 'Reuni Dadakan ( Dadakan Pisan... Eleh Tahu Bulat Oge ! )', '2022-02-04 05:38:00', 'Kampus Tercinta PASIM', '19.00', '2022-02-03 03:39:00', 'Ayo Reuni Bosquuuuw', 'Mendatang'),
-('Event_02', '19', 'Alhamdulillah Beres Oge Projekan Abi', '2022-02-04 03:51:00', 'ASBAR', '03.51', '2022-02-04 03:52:00', 'Alhamdulillah, Register, Login, Create, Read, Auth, Helper, Logout, Boostrap', 'Selesai');
+('Event_02', '19', 'Alhamdulillah Beres Oge Projekan Abi', '2022-02-04 03:51:00', 'ASBAR', '03.51', '2022-02-04 03:52:00', 'Alhamdulillah, Register, Login, Create, Read, Auth, Helper, Logout, Boostrap', 'Selesai'),
+('Event_03', '19', 'Gabut', '2022-04-09 01:48:00', 'PASIM', '10.00-Selesai', '2022-04-08 01:48:00', 'Ya Gitu', 'Berlangsung');
 
 -- --------------------------------------------------------
 
@@ -91,7 +93,8 @@ CREATE TABLE `tb_roles` (
 --
 
 INSERT INTO `tb_roles` (`Id`, `Username`) VALUES
-('1', 'Admin');
+('1', 'Admin'),
+('2', 'User');
 
 -- --------------------------------------------------------
 
@@ -110,6 +113,7 @@ CREATE TABLE `tb_tahun` (
 --
 
 INSERT INTO `tb_tahun` (`Id_angkatan`, `Tahun_angkatan`, `Nama_angkatan`) VALUES
+('15', '2016', 'Phyton'),
 ('16', '2017', 'Mallware'),
 ('17', '2018', 'Firewall'),
 ('18', '2019', 'JARVIS'),
@@ -136,7 +140,9 @@ CREATE TABLE `tb_user` (
 
 INSERT INTO `tb_user` (`Username`, `Password`, `Nama_Lengkap`, `Email`, `RolesId`) VALUES
 ('aren', '06032001', 'Aren Kurnia', 'arenkurnia@gmail.com', '1'),
-('hanafi', '23042000', 'Hanafi Abdullah', 'hanafiabdullah375@gmail.com', '1');
+('hanafi', '23042000', 'Hanafi Abdullah', 'hanafiabdullah375@gmail.com', '2'),
+('raga', 'raga123', 'Raga Kurniawan', 'ragak137@gmail.com', '2'),
+('randi', 'randi', 'Randi Firmansyah', 'solihahade75@gmail.com', '2');
 
 -- --------------------------------------------------------
 
@@ -154,7 +160,11 @@ CREATE TABLE `__efmigrationshistory` (
 --
 
 INSERT INTO `__efmigrationshistory` (`MigrationId`, `ProductVersion`) VALUES
-('20220203172712_Alumni', '5.0.13');
+('20220203172712_Alumni', '5.0.13'),
+('20220404082635_Kedua', '5.0.13'),
+('20220405220838_Alumnis', '5.0.13'),
+('20220408161336_terakhir', '5.0.13'),
+('20220408181537_UAS', '5.0.13');
 
 --
 -- Indexes for dumped tables
