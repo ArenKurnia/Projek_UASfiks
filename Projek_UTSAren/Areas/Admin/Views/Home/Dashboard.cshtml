@@ -1,0 +1,120 @@
+﻿@model Dashboard;
+
+@{ ViewData["Title"] = "Dashboard"; }
+
+@{ Layout = "_LayoutAdmin"; }
+
+<br />
+<h2>Data Alumni</h2>
+<hr />
+<table class="table" id="tb-datatable">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(item => item.alumni[0].NIM)
+            </th>
+            <th>
+                @Html.DisplayNameFor(item => item.alumni[0].Nama_alumni)
+            </th>
+            <th>
+                @Html.DisplayNameFor(item => item.alumni[0].Tahun_angkatan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(item => item.alumni[0].Jenis_kelamin)
+            </th>
+            <th>
+                @Html.DisplayNameFor(item => item.alumni[0].Tempat_lahir)
+            </th>
+            <th>
+                @Html.DisplayNameFor(item => item.alumni[0].Tanggal_lahir)
+            </th>
+            <th>
+                @Html.DisplayNameFor(item => item.alumni[0].Pekerjaan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(item => item.alumni[0].Alamat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(item => item.alumni[0].Telp)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.alumni)
+        {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.NIM)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Nama_alumni)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Tahun_angkatan)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Jenis_kelamin)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Tempat_lahir)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Tanggal_lahir)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Pekerjaan)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Alamat)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Telp)
+    </td>
+</tr>
+}
+    </tbody>
+</table>
+
+<br />
+<br />
+<h2>Data User</h2>
+<hr />
+<table class="table" id="tb-datatable">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(item => item.user[0].Username)
+            </th>
+            <th>
+                @Html.DisplayNameFor(item => item.user[0].Nama_Lengkap)
+            </th>
+            <th>
+                @Html.DisplayNameFor(item => item.user[0].Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(item => item.user[0].Roles)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.user)
+        {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Username)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Nama_Lengkap)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Email)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Roles)
+    </td>
+</tr>
+}
+    </tbody>
+</table>
+@await Html.PartialAsync("Partial/ListEvent.cshtml")
+@await Html.PartialAsync("Partial/ListTahun.cshtml")

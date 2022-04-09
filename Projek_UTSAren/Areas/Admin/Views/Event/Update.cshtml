@@ -1,0 +1,68 @@
+﻿@model Event
+
+@{ Layout = "_LayoutAkun"; }
+
+<h2 style="text-align:center">Edit</h2>
+
+<h4 style="text-align:center">Data Event</h4>
+<hr />
+<div class="row">
+    <div class="card-body">
+        <form asp-action="Update">
+            <div class="form-group">
+                <label asp-for="Id_event" class="control-label"></label>
+                <input asp-for="Id_event" class="form-control" />
+                <span asp-validation-for="Id_event" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Id_angkatan" class="control-label"></label>
+                <input asp-for="Id_angkatan" class="form-control" />
+                <span asp-validation-for="Id_angkatan" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Nama_event" class="control-label"></label>
+                <textarea asp-for="Nama_event" class="form-control"></textarea>
+                <span asp-validation-for="Nama_event" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tanggal" class="control-label"></label>
+                <input asp-for="Tanggal" class="form-control" />
+                <span asp-validation-for="Tanggal" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tempat" class="control-label"></label>
+                <input asp-for="Tempat" class="form-control" />
+                <span asp-validation-for="Tempat" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Waktu" class="control-label"></label>
+                <input asp-for="Waktu" class="form-control" />
+                <span asp-validation-for="Waktu" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Batas_daftar" class="control-label"></label>
+                <input asp-for="Batas_daftar" class="form-control" />
+                <span asp-validation-for="Batas_daftar" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Keterangan" class="control-label"></label>
+                <input asp-for="Keterangan" class="form-control" />
+                <span asp-validation-for="Keterangan" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Status" class="control-label"></label>
+                <input asp-for="Status" class="form-control" />
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Update" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<div>
+    <a class="btn btn-dark" style="color:white" asp-action="Index">  Kembali</a>
+</div>
+<br />
+<br />

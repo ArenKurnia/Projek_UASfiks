@@ -1,0 +1,92 @@
+﻿@model IEnumerable<Alumni>
+
+@{ Layout = "_LayoutAdmin"; }
+
+@{ ViewData["Title"] = "Index"; }
+
+<br />
+<br />
+<p>
+    <a class="btn btn-info" asp-controller="Alumni" asp-action="Create">Tambah</a>
+</p>
+
+<div class="card mb-4">
+    <div class="card-header">
+        <i class="fas fa-table me-1"></i>
+        Data Alumni
+    </div>
+    <div class="card-body">
+        <table class="table" id="datatablesSimple">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.NIM)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Nama_alumni)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Tahun_angkatan)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Jenis_kelamin)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Tempat_lahir)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Tanggal_lahir)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Pekerjaan)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Alamat)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Telp)
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NIM)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nama_alumni)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Tahun_angkatan)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Jenis_kelamin)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Tempat_lahir)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Tanggal_lahir)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Pekerjaan)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Alamat)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Telp)
+                    </td>
+                    <td>
+                        <a class="btn btn-info" style="color:white" asp-action="Update" asp-route-id="@item.NIM">Edit</a>
+                        <a class="btn btn-dark" style="color:white" asp-action="Detail" asp-route-id="@item.NIM">Detail</a>
+                            <a class="btn btn-info" style="background-color:red" asp-action="Delete" asp-route-id="@item.NIM" onclick="if (!confirm('Yakin Ingin Hapus?')) { return false;}">Hapus</a>
+                    </td>
+                </tr>}
+            </tbody>
+        </table>
+    </div>
+</div>
+

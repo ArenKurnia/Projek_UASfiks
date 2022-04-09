@@ -1,0 +1,17 @@
+﻿@model List<Tahun>
+
+@{ Layout = "_LayoutAdmin"; }
+
+<br />
+<h3>Detail Data Tahun</h3>
+<hr />
+@foreach (var data in ViewBag.details)
+{
+    <p>Id Angkatan    : @data.Id_angkatan </p>
+    <p>Tahun Angkatan : @data.Tahun_angkatan </p>
+    <p>Nama Angkatan  : @data.Nama_angkatan </p>
+    <br />
+    <br />
+    <a class="btn btn-dark" style="color:white" asp-action="Update" asp-route-id="@data.Id_angkatan">Edit</a>
+}
+<a class="btn btn-dark" style="color:white" asp-action="Index">Kembali</a>

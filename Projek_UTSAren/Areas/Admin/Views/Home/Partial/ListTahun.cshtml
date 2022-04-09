@@ -1,0 +1,37 @@
+﻿@model Dashboard;
+
+
+<br />
+<h2>Data Tahun</h2>
+<hr />
+<table class="table" id="tb-datatable">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(item => item.tahun[0].Id_angkatan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(item => item.tahun[0].Tahun_angkatan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(item => item.tahun[0].Nama_angkatan)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.tahun)
+        {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Id_angkatan)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Tahun_angkatan)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Nama_angkatan)
+    </td>
+</tr>
+}
+    </tbody>
+</table>

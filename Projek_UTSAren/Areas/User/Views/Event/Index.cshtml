@@ -1,0 +1,86 @@
+﻿@model IEnumerable<Event>
+
+@{ Layout = "_LayoutUser"; }
+
+@{ ViewData["Title"] = "Index"; }
+
+<br />
+<br />
+<div class="card mb-4">
+    <div class="card-header">
+        <i class="fas fa-table me-1"></i>
+        Data Event
+    </div>
+    <div class="card-body">
+        <table class="table" id="datatablesSimple">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Id_event)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Id_angkatan)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Nama_event)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Tanggal)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Tempat)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Waktu)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Batas_daftar)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Keterangan)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Status)
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Id_event)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Id_angkatan)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nama_event)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tanggal)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tempat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Waktu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Batas_daftar)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Keterangan)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>
+        <td>
+            <a class="btn btn-dark" style="color:white" asp-action="Detail" asp-route-id="@item.Id_event">Detail</a>
+        </td>
+    </tr>
+    }
+            </tbody>
+        </table>
+    </div>
+</div>

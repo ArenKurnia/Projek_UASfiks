@@ -1,0 +1,125 @@
+﻿@model User
+
+@{ Layout = "_LayoutAkun"; }
+
+<div class="card-header"><h3 class="text-center font-weight-light my-4">Register</h3></div>
+<div class="card-body">
+    <form asp-action="Daftar" method="post" id="form-input">
+        <div class="input-group mb-3">
+            <input asp-for="Username" class="wajib form-control" placeholder="Username" />
+            <div class="input-group-append">
+                <div class="input-group-text">
+                    <span class="fas fa-user"></span>
+                </div>
+            </div>
+        </div>
+        <span asp-validation-for="Username" class="text-danger"></span>
+        <div class="input-group mb-3">
+            <input asp-for="Email" class="wajib form-control" placeholder="Email" />
+            <div class="input-group-append">
+                <div class="input-group-text">
+                    <span class="fas fa-envelope"></span>
+                </div>
+            </div>
+        </div>
+        <span asp-validation-for="Email" class="text-danger"></span>
+        <div class="input-group mb-3">
+            <input asp-for="Nama_Lengkap" class="wajib form-control" placeholder="Nama_Lengkap" />
+            <div class="input-group-append">
+                <div class="input-group-text">
+                    <span class="fas fa-user"></span>
+                </div>
+            </div>
+        </div>
+        <span asp-validation-for="Nama_Lengkap" class="text-danger"></span>
+        <div class="input-group mb-3">
+            <input asp-for="Password" type="password" class="wajib form-control" placeholder="Password" />
+            <div class="input-group-append">
+                <div class="input-group-text">
+                    <span class="fas fa-lock"></span>
+                </div>
+            </div>
+        </div>
+        <span asp-validation-for="Password" class="text-danger"></span>
+
+        <div class="input-group mb-3">
+            <input type="text" name="otp" id="otp" class="form-control" placeholder="Masukan OTP" required />
+            <div class="d-flex justify-content-end mb-4">
+                <button type="button" id="email-btn" disabled class="btn btn-success">
+                    Kirim Email
+                </button>
+            </div>
+        </div>
+
+        <br />
+
+        <div class="row">
+            <div class="col-6">
+                <input type="reset" class="btn btn-danger btn-block" value="Kosongkan" />
+            </div>
+            <div class="col-6">
+                <button type="submit" id="btn-submit" disabled class="btn btn-primary btn-block">Daftar</button>
+            </div>
+            <!-- /.col -->
+        </div>
+    </form>
+
+</div>
+<div class="card-footer text-center py-3">
+    <div class="small">Sudah Punya Akun? <a asp-action="Masuk"> Login</a></div>
+</div>
+
+@section Scripts{
+    <script>
+
+        let ambilNilai = () => {
+            // #Email artinya id pada <input asp-for="Email"
+            return $("#Email").val();
+        }
+
+        $(document).ready(function () {
+            $("#email-btn").click(function (e) {
+
+                // alert
+                swal({
+                    title: "Mohon Tunggu",
+                    text: "Sedang mengirim email",
+                    icon: "info",
+                    button: "Baik",
+                });
+
+                // method post
+                // NamaController/NamaFunction
+                $.post("/Akun/KirimEmailOTP",
+                    {
+                        // harus sama dengan parameter di fungsi KirimEmailOTP
+                        emailTujuan: ambilNilai()
+                    },
+                    function (returnya) {
+                        // alert
+                        swal({
+                            title: returnya.result == true ? "Sukses" : "Gagal",
+                            text: returnya.message,
+                            icon: returnya.result == true ? "success" : "error",
+                            button: "Baik",
+                            closeOnClickOutside: false,
+                        });
+                    });
+            })
+
+            $('#form-input').on('keyup', function () {
+                let lengkap = $(".wajib")
+                    .filter(
+                        function () {
+                            return $.trim($(this).val()).length == 0
+                        })
+                    .length == 0
+
+                let otpTerisi = $("#otp").val().length > 0
+
+                $('#email-btn').attr('disabled', lengkap ? false : true)
+                $('#btn-submit').attr('disabled', lengkap && otpTerisi ? false : true)
+            })
+        })
+    </script>
+}

@@ -1,0 +1,74 @@
+﻿@model Alumni
+
+@{ Layout = "_LayoutAkun"; }
+<h2 style="text-align:center">Edit</h2>
+
+<h4 style="text-align:center">Data Alumni</h4>
+<hr />
+<div class="row">
+    <div class="card-body">
+        <form asp-action="Update" enctype="multipart/form-data">
+            <div class="form-group">
+                <label asp-for="NIM" class="control-label"></label>
+                <input asp-for="NIM" class="form-control" />
+                <span asp-validation-for="NIM" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Nama_alumni" class="control-label"></label>
+                <textarea asp-for="Nama_alumni" class="form-control"></textarea>
+                <span asp-validation-for="Nama_alumni" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tahun_angkatan" class="control-label"></label>
+                <input asp-for="Tahun_angkatan" class="form-control" />
+                <span asp-validation-for="Tahun_angkatan" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Jenis_kelamin" class="control-label"></label>
+                <input asp-for="Jenis_kelamin" class="form-control" />
+                <span asp-validation-for="Jenis_kelamin" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tempat_lahir" class="control-label"></label>
+                <input asp-for="Tempat_lahir" class="form-control" />
+                <span asp-validation-for="Tempat_lahir" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tanggal_lahir" class="control-label"></label>
+                <input asp-for="Tanggal_lahir" class="form-control" />
+                <span asp-validation-for="Tanggal_lahir" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pekerjaan" class="control-label"></label>
+                <input asp-for="Pekerjaan" class="form-control" />
+                <span asp-validation-for="Pekerjaan" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Alamat" class="control-label"></label>
+                <textarea asp-for="Alamat" class="form-control"></textarea>
+                <span asp-validation-for="Alamat" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Telp" class="control-label"></label>
+                <input asp-for="Telp" class="form-control" />
+                <span asp-validation-for="Telp" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Foto" class="control-label"></label>
+                <input asp-for="Foto" type="hidden" />
+                <img src="@Model.Foto" width="100" alt="Alternate Text" />
+                <input type="file" name="Image" class="form-control" accept=".jpg,.png,.jpeg" multiple />
+            </div>
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Update" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<div>
+    <a  class="btn btn-dark" style="color:white" asp-area="Admin" asp-action="Index">Kembali</a>
+</div>
+<br />
+<br />
+<br />

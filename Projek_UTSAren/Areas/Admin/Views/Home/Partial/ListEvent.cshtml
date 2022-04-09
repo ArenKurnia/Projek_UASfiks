@@ -1,0 +1,72 @@
+﻿@model Dashboard;
+
+<br />
+<h2>Data Event</h2>
+<hr />
+<table class="table" id="tb-datatable">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(item => item.even[0].Id_event)
+            </th>
+            <th>
+                @Html.DisplayNameFor(item => item.even[0].Id_angkatan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(item => item.even[0].Nama_event)
+            </th>
+            <th>
+                @Html.DisplayNameFor(item => item.even[0].Tanggal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(item => item.even[0].Tempat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(item => item.even[0].Waktu)
+            </th>
+            <th>
+                @Html.DisplayNameFor(item => item.even[0].Batas_daftar)
+            </th>
+            <th>
+                @Html.DisplayNameFor(item => item.even[0].Keterangan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(item => item.even[0].Status)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.even)
+        {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Id_event)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Id_angkatan)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Nama_event)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Tanggal)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Tempat)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Waktu)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Batas_daftar)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Keterangan)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Status)
+    </td>
+</tr>
+}
+    </tbody>
+</table>
