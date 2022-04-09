@@ -172,5 +172,30 @@ namespace Projek_UTSAren.Controllers.Api
             _respon = _bantu.BuatResponAPI(_bantu.CodeBadRequest, _bantu.PesanTidakDitemukan(SEvent), null);
             return Ok(_respon);
         }
+        [Route("event/{id}")]
+        [HttpDelete]
+        public IActionResult DeleteEvent(string id)
+        {
+            try
+            {
+                _TEvent = _eventService.AmbilEventBerdasarkanId(id);
+
+                if (_TEvent != null)
+                {
+                    _alumniService.HapusAlumni(id);
+
+                    _respon = _bantu.BuatResponAPI(_bantu.CodeOk, _bantu.PesanHapusSukses(SEvent), _TEvent);
+                    return Ok(_respon);
+                }
+
+                _respon = _bantu.BuatResponAPI(_bantu.CodeInternalServerError, _bantu.PesanTidakDitemukan(SAlumni), null);
+                return Ok(_respon);
+            }
+            catch
+            {
+                _respon = _bantu.BuatResponAPI(_bantu.CodeBadRequest, _bantu.PesanInputanSalah(SAlumni), null);
+                return Ok(_respon);
+            }
+        }
     }
 }
