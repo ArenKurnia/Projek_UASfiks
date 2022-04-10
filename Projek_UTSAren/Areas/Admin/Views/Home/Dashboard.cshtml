@@ -70,8 +70,7 @@
     <td>
         @Html.DisplayFor(modelItem => item.Telp)
     </td>
-</tr>
-}
+</tr>}
     </tbody>
 </table>
 
@@ -112,9 +111,22 @@
     <td>
         @Html.DisplayFor(modelItem => item.Roles)
     </td>
-</tr>
-}
+</tr>}
     </tbody>
 </table>
 @await Html.PartialAsync("Partial/ListEvent.cshtml")
 @await Html.PartialAsync("Partial/ListTahun.cshtml")
+
+
+@section Scripts {
+    <script>$(document).ready(function () {
+            $('#tb-datatable').DataTable(
+                {
+                    dom: 'Bfrtip',
+                    buttons: [
+                        'print',
+                    ]
+                }
+            );
+        });</script>
+}
