@@ -174,7 +174,7 @@ namespace Projek_UTSAren.Controllers.Api
         }
         [Route("event/{id}")]
         [HttpDelete]
-        public IActionResult DeleteEvent(string id)
+        public IActionResult HapusEvent(string id)
         {
             try
             {
@@ -182,18 +182,18 @@ namespace Projek_UTSAren.Controllers.Api
 
                 if (_TEvent != null)
                 {
-                    _alumniService.HapusAlumni(id);
+                    _eventService.HapusEvent(id);
 
                     _respon = _bantu.BuatResponAPI(_bantu.CodeOk, _bantu.PesanHapusSukses(SEvent), _TEvent);
                     return Ok(_respon);
                 }
 
-                _respon = _bantu.BuatResponAPI(_bantu.CodeInternalServerError, _bantu.PesanTidakDitemukan(SAlumni), null);
+                _respon = _bantu.BuatResponAPI(_bantu.CodeInternalServerError, _bantu.PesanTidakDitemukan(SEvent), null);
                 return Ok(_respon);
             }
             catch
             {
-                _respon = _bantu.BuatResponAPI(_bantu.CodeBadRequest, _bantu.PesanInputanSalah(SAlumni), null);
+                _respon = _bantu.BuatResponAPI(_bantu.CodeBadRequest, _bantu.PesanInputanSalah(SEvent), null);
                 return Ok(_respon);
             }
         }

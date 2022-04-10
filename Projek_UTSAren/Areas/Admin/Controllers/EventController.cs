@@ -84,7 +84,7 @@ namespace Projek_UTSAren.Areas.Admin.Controllers
 
             return RedirectToAction("Index");
         }
-        public IActionResult DetailEvent(string id)
+        public IActionResult Detail(string id)
         {
             Event cari = _eventService.AmbilEventBerdasarkanId(id);
 
