@@ -1,23 +1,85 @@
-﻿@model List<Event>
+﻿@model Event
 
 @{ Layout = "_LayoutUser"; }
 
+@{ ViewData["Title"] = "Detail"; }
 
 <br />
-<h2>Detail Data Event</h2>
+<h2>Detail Event</h2>
 <hr />
-@foreach (var data in ViewBag.details)
-{
-    <p>Id Event       : @data.Id_event </p>
-    <p>Id Angkatan    : @data.Id_angkatan </p>
-    <p>Nama Event     : @data.Nama_event </p>
-    <p>Tanggal        : @data.Tanggal </p>
-    <p>Tempat         : @data.Tempat </p>
-    <p>Waktu          : @data.Waktu </p>
-    <p>Batas Daftar   : @data.Batas_daftar </p>
-    <p>Keterangan     : @data.Keterangan </p>
-    <p>Status         : @data.Status </p>
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Id_event)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Id_event)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Id_angkatan)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Id_angkatan)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Nama_event)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Nama_event)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Tanggal)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Tanggal)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Tempat)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Tempat)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Waktu)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Waktu)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Batas_daftar)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Batas_daftar)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Keterangan)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Keterangan)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+    </dl>
+</div>
+<br />
+<br />
+<div>
+    <a class="btn btn-dark" style="color:white" asp-action="Index">Kembali</a>
+    <a class="btn btn-dark" id="tb-datatable" style="color:white">Print</a>
+</div>
+section Scripts {
+<script>$(document).ready(function () {
+            $('#tb-datatable').DataTable(
+                {
+                    dom: 'Bfrtip',
+                    buttons: [
+                        'print',
+                    ]
+                }
+            );
+        });</script>
 }
-<br />
-<br />
-<a class="btn btn-dark" style="color:white" asp-action="Index">Kembali</a>

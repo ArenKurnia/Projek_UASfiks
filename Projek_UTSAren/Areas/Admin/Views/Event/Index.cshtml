@@ -15,7 +15,7 @@
         Data Event
     </div>
     <div class="card-body">
-        <table class="table" id="datatablesSimple">
+        <table class="table" id="tb-datatable">
             <thead>
                 <tr>
                     <th>
@@ -83,9 +83,22 @@
             <a class="btn btn-dark" style="color:white" asp-action="Detail" asp-route-id="@item.Id_event">Detail</a>
             <a class="btn btn-info" style="background-color:red" asp-action="Delete" asp-route-id="@item.Id_event" onclick="if (!confirm('Yakin Ingin Hapus?')) { return false;}">Hapus</a>
         </td>
-    </tr>
-}
+    </tr>}
             </tbody>
         </table>
     </div>
 </div>
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#tb-datatable').DataTable(
+                {
+                    dom: 'Bfrtip',
+                    buttons: [
+                        'print',
+                    ]
+                }
+            );
+        });
+    </script>
+}

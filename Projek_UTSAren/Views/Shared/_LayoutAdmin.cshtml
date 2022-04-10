@@ -24,11 +24,9 @@
         <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
             <div class="input-group">
                 @{ string cek = User.GetUsername();
-                                if (cek != "")
-                                {
-                                    <b style="color:white">Admin : @User.GetUsername() &nbsp;</b> 
-                                } 
-                 }
+                    if (cek != "")
+                    {
+        <b style="color:white">Admin : @User.GetUsername() &nbsp;</b> } }
             </div>
         </form>
         <!-- Navbar-->
@@ -108,5 +106,8 @@
     <script src="~/dist/assets/demo/chart-bar-demo.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
     <script src="~/dist/assets/demo/datatables-demo.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/2.2.2/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.print.min.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

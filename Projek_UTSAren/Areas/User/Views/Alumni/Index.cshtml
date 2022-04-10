@@ -13,7 +13,7 @@
         Data Alumni
     </div>
     <div class="card-body">
-        <table class="table" id="datatablesSimple">
+        <table class="table" id="tb-datatable">
             <thead>
                 <tr>
                     <th>
@@ -79,10 +79,21 @@
         <td>
             <a class="btn btn-dark" style="color:white" asp-action="Detail" asp-route-id="@item.NIM">Detail</a>
         </td>
-    </tr>
-}
+    </tr>}
             </tbody>
         </table>
     </div>
 </div>
+@section Scripts {
+    <script>$(document).ready(function () {
+            $('#tb-datatable').DataTable(
+                {
+                    dom: 'Bfrtip',
+                    buttons: [
+                        'print',
+                    ]
+                }
+            );
+        });</script>
+}
 
